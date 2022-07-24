@@ -3,6 +3,7 @@ import 'dart:ffi';
 import 'questions.dart';
 
 class TestData{
+      int _questionIndex=0;
 
 
    List<Question> _QuestionsBank = [
@@ -14,19 +15,23 @@ class TestData{
      Question(questionText: 'Fatih sorusu', questionAnswer: false)
    ];
 
-  String getQuestionText (int questionIndex){
+  String getQuestionText ( ){
 
-    return _QuestionsBank[questionIndex].questionText;
+    return _QuestionsBank[_questionIndex].questionText;
 
   }
 
-  bool getQuestionAnswer (int questionIndex){
+  bool getQuestionAnswer ( ){
 
-    return _QuestionsBank[questionIndex].questionAnswer;
+    return _QuestionsBank[_questionIndex].questionAnswer;
   }
 
-  int getQestionsBankLength (){
-    return _QuestionsBank.length;
+  void NextQuestion (){
+
+    _QuestionsBank.length-1>_questionIndex
+      ? _questionIndex++
+      : _questionIndex=0;
+
   }
 
  }

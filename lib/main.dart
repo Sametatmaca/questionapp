@@ -29,7 +29,6 @@ class _SoruSayfasiState extends State<SoruSayfasi> {
 
   TestData test_1 = TestData();
 
-  int questionIndex=0;
   bool buttonAnswer = true;
 
    List<Widget>  Result =  [
@@ -48,7 +47,7 @@ class _SoruSayfasiState extends State<SoruSayfasi> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                test_1.getQuestionText(questionIndex),
+                test_1.getQuestionText(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 20.0,
@@ -92,22 +91,12 @@ class _SoruSayfasiState extends State<SoruSayfasi> {
                         setState(() {
                           buttonAnswer=false;
 
-
-                          if(test_1.getQuestionAnswer(questionIndex)==buttonAnswer){
+                          if(test_1.getQuestionAnswer()==buttonAnswer){
                             Result.add(cIconHappy);
                           }else{
                             Result.add(cIconSad);
                           }
-                          print(questionIndex);
-
-                          if (questionIndex >= (test_1.getQestionsBankLength() - 1)) {
-                            questionIndex = 0;
-                          } else {
-                            questionIndex++;
-                          }
-                          print(questionIndex);
-                          print(test_1.getQestionsBankLength());
-
+                          test_1.NextQuestion();
                         });
                       },
                     ),
@@ -130,21 +119,13 @@ class _SoruSayfasiState extends State<SoruSayfasi> {
                         setState(() {
                           buttonAnswer=true;
 
-                          if(test_1.getQuestionAnswer(questionIndex)==buttonAnswer){
+                          if(test_1.getQuestionAnswer()==buttonAnswer){
                             Result.add(cIconHappy);
                           }else{
                             Result.add(cIconSad);
                           }
 
-                          print(test_1.getQestionsBankLength());
-
-                          if (questionIndex >= (test_1.getQestionsBankLength() - 1)) {
-                            questionIndex = 0;
-                          } else {
-                            questionIndex++;
-                          }
-                          print(questionIndex);
-                          print(test_1.getQestionsBankLength());
+                          test_1.NextQuestion();
                         });
                       },
                       child: Icon(
