@@ -48,7 +48,7 @@ class _SoruSayfasiState extends State<SoruSayfasi> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                test_1.QuestionsBank[questionIndex].questionText,
+                test_1.getQuestionText(questionIndex),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 20.0,
@@ -93,20 +93,20 @@ class _SoruSayfasiState extends State<SoruSayfasi> {
                           buttonAnswer=false;
 
 
-                          if(test_1.QuestionsBank[questionIndex].questionAnswer==buttonAnswer){
+                          if(test_1.getQuestionAnswer(questionIndex)==buttonAnswer){
                             Result.add(cIconHappy);
                           }else{
                             Result.add(cIconSad);
                           }
                           print(questionIndex);
 
-                          if (questionIndex >= (test_1.QuestionsBank.length - 1)) {
+                          if (questionIndex >= (test_1.getQestionsBankLength() - 1)) {
                             questionIndex = 0;
                           } else {
                             questionIndex++;
                           }
                           print(questionIndex);
-                          print(test_1.QuestionsBank.length);
+                          print(test_1.getQestionsBankLength());
 
                         });
                       },
@@ -130,21 +130,21 @@ class _SoruSayfasiState extends State<SoruSayfasi> {
                         setState(() {
                           buttonAnswer=true;
 
-                          if(test_1.QuestionsBank[questionIndex].questionAnswer==buttonAnswer){
+                          if(test_1.getQuestionAnswer(questionIndex)==buttonAnswer){
                             Result.add(cIconHappy);
                           }else{
                             Result.add(cIconSad);
                           }
 
-                          print(test_1.QuestionsBank.length);
+                          print(test_1.getQestionsBankLength());
 
-                          if (questionIndex >= (test_1.QuestionsBank.length - 1)) {
+                          if (questionIndex >= (test_1.getQestionsBankLength() - 1)) {
                             questionIndex = 0;
                           } else {
                             questionIndex++;
                           }
                           print(questionIndex);
-                          print(test_1.QuestionsBank.length);
+                          print(test_1.getQestionsBankLength());
                         });
                       },
                       child: Icon(
